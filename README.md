@@ -4,27 +4,24 @@ Use the [RCQRS](https://github.com/slashdotdash/rcqrs) library in your Rails 3 w
 
 ## Usage
 
+Add the following dependencies to your Rails app's Gemfile and then `bundle install`
+
+    gem "rcqrs"
+    gem "rcqrs-rails"
+
 ### Automatic
 Use rails g rcqrs:install 
 
 ### Manual
 
-Add the following dependencies to your Rails app's Gemfile and then `sudo bundle install`
-
-    gem "uuidtools"
-    gem "yajl-ruby", :require => 'yajl'
-    gem "eventful"
-    gem "rcqrs"
-    gem "rcqrs-rails"
-
 Add the following snippet inside `application_controller.rb` (ensuring it is `protected`) to allow each of your controllers to publish commands.
 
+  protected:
     def publish(command)
       Rcqrs::Gateway.publish(command)
     end
 
-Create a yaml config file with your event storage configuration named `config/event_storage.yml` (or copy the example in `example/event_storage.yml`).
-
+Create a yaml config file with your event storage configuration named `config/event_storage.yml` (or copy the example from `example/event_storage.yml`).
 
 Add the following paths to your `application.rb` file `autoload_paths` configuration
     config.autoload_paths += %W(
@@ -37,7 +34,6 @@ Add the following paths to your `application.rb` file `autoload_paths` configura
 								  #{config.root}/lib
 								)
 
-
 ##Generators
 
 This plugin provides three generators to ease common tasks for generating commands, events and controllers using the CQRS pattern.
@@ -45,5 +41,6 @@ This plugin provides three generators to ease common tasks for generating comman
 * rcqrs:command
 * rcqrs:controller
 * rcqrs:event
+* rcqrs:install
 
 Usage is `rails generate rcqrs:command <command name>`

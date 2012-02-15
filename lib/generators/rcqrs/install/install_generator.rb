@@ -2,10 +2,10 @@ require 'rails/generators'
 
 module Rcqrs
     class InstallGenerator < Rails::Generators::Base
-   		source_root File.join(File.dirname(__FILE__), 'example')
+   		source_root File.expand_path('../../../../../example', __FILE__)
     
       def create_event_storage_db_config_file
-			#	copy_file "event_storage.yml", "config/"
+				copy_file "event_storage.yml", "config/event_storage.yml"
       end
 
       def create_rcqrs_publish_initializer
