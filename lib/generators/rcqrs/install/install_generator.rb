@@ -2,18 +2,10 @@ require 'rails/generators'
 
 module Rcqrs
     class InstallGenerator < Rails::Generators::Base
+   		source_root File.join(File.dirname(__FILE__), 'example')
     
-      def add_gem_dependencies
-        gem "uuidtools"
-        gem "yajl-ruby", :require => 'yajl'
-        gem "eventful"
-        gem "rcqrs"
-        gem "rcqrs-rails"
-      end
-
       def create_event_storage_db_config_file
-        # just copy the existing one :-P
-        copy_file File.join(destination_root, "config/database.yml"), "config/event_storage.yml"
+			#	copy_file "event_storage.yml", "config/"
       end
 
       def create_rcqrs_publish_initializer
