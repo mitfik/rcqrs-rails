@@ -4,6 +4,11 @@ Use the [RCQRS](https://github.com/slashdotdash/rcqrs) library in your Rails 3 w
 
 ## Usage
 
+### Automatic
+Use rails g rcqrs:install 
+
+### Manual
+
 Add the following dependencies to your Rails app's Gemfile and then `sudo bundle install`
 
     gem "uuidtools"
@@ -19,6 +24,19 @@ Add the following snippet inside `application_controller.rb` (ensuring it is `pr
     end
 
 Create a yaml config file with your event storage configuration named `config/event_storage.yml` (or copy the example in `example/event_storage.yml`).
+
+
+Add the following paths to your `application.rb` file `autoload_paths` configuration
+    config.autoload_paths += %W(
+								  #{config.root}/app/commands
+								  #{config.root}/app/commands/handlers
+								  #{config.root}/app/domain
+								  #{config.root}/app/events
+								  #{config.root}/app/events/handlers
+								  #{config.root}/app/validators
+								  #{config.root}/lib
+								)
+
 
 ##Generators
 

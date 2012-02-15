@@ -7,8 +7,8 @@ module Rcqrs
         gem "uuidtools"
         gem "yajl-ruby", :require => 'yajl'
         gem "eventful"
-        gem "rcqrs", :git => "git://github.com/virtualstaticvoid/rcqrs.git", :branch => "master"
-        gem "rcqrs-rails", :git => "git://github.com/virtualstaticvoid/rcqrs-rails.git", :branch => "master"
+        gem "rcqrs"
+        gem "rcqrs-rails"
       end
 
       def create_event_storage_db_config_file
