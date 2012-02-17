@@ -8,17 +8,6 @@ module Rcqrs
 				copy_file "event_storage.yml", "config/event_storage.yml"
       end
 
-      def create_rcqrs_publish_initializer
-        @snippet = <<CODE
-# define "global" publish method
-def publish(command)
-  Rcqrs::Gateway.publish(command)
-end
-CODE
-
-        initializer 'rcqrs_publish.rb', @snippet
-      end
-
       def create_rcqrs_directories
         empty_directory_with_gitkeep "app/commands"
         empty_directory_with_gitkeep "app/commands/handlers"
