@@ -39,11 +39,14 @@ Add the following paths to your `application.rb` file `autoload_paths` configura
 This plugin provides three generators to ease common tasks for generating commands, events and controllers using the CQRS pattern.
 
 * rcqrs:command
-* rcqrs:controller
 * rcqrs:event
 * rcqrs:install
+* rcqrs:domain
 
-Usage is `rails generate rcqrs:command <command name>`
+Usage is `rails g rcqrs:command <command name>`
+         `rails g rcqrs:event <event_name>`
+         `rails g rcqrs:domain <domain name>`
+         `rails g rcqrs:install
 
 ## Setting
 

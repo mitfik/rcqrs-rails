@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
     "lib/generators/rcqrs/command/command_generator.rb",
     "lib/generators/rcqrs/command/templates/command.rb",
     "lib/generators/rcqrs/command/templates/handler.rb",
+    "lib/generators/rcqrs/domain/domain_generator.rb",
+    "lib/generators/rcqrs/domain/templates/domain.rb",
     "lib/generators/rcqrs/event/event_generator.rb",
     "lib/generators/rcqrs/event/templates/event.rb",
     "lib/generators/rcqrs/event/templates/handler.rb",
