@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rcqrs-rails"
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben Smith"]
-  s.date = "2012-02-15"
+  s.date = "2012-02-17"
   s.email = "ben@slashdotdash.net"
   s.extra_rdoc_files = [
     "LICENSE",
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "lib/generators/rcqrs/install/install_generator.rb",
     "lib/rcqrs-rails.rb",
     "lib/rcqrs/gateway.rb",
+    "lib/rcqrs/setting.rb",
     "rcqrs-rails.gemspec"
   ]
   s.homepage = "http://github.com/slashdotdash/rcqrs-rails"

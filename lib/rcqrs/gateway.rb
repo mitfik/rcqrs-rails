@@ -42,11 +42,16 @@ module Rcqrs
     end
     
     def create_event_storage
-      if Rails.env.test?
-        EventStore::Adapters::InMemoryAdapter.new 
-      else
-        config = YAML.load_file(File.join(Rails.root, 'config/event_storage.yml'))[Rails.env]
-        EventStore::Adapters::ActiveRecordAdapter.new(config)
+      case Setting.default_orm 
+        when :data_mapper
+          raise NotImplementedError, "Not implemented yet, needed adapter for data mapper"
+        when :active_record
+          config = YAML.load_file(File.join(Rails.root, 'config/event_storage.yml'))[Rails.env]
+          EventStore::Adapters::ActiveRecordAdapter.new(config)
+        when :in_memory
+          EventStore::Adapters::InMemoryAdapter.new 
+        else
+          raise "This ORM is not supported yet: #{Setting.default_orm}, try use :data_mapper, :active_record or :in_memory"
       end
     end
   end
