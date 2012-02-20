@@ -43,10 +43,9 @@ module Rcqrs
     def create_event_storage
       case Setting.default_orm 
         when :data_mapper
-          config = YAML.load_file(File.join(Rails.root, 'config/event_storage.yml'))[Rails.env]
-          EventStore::Adapters::DataMapperAdapter.new(config)
+          EventStore::Adapters::DataMapperAdapter.new
         when :active_record
-          config = YAML.load_file(File.join(Rails.root, 'config/event_storage.yml'))[Rails.env]
+          config = YAML.load_file(File.join(Rails.root, Setting.default_database_file_path))[Rails.env]
           EventStore::Adapters::ActiveRecordAdapter.new(config)
         when :in_memory
           EventStore::Adapters::InMemoryAdapter.new 

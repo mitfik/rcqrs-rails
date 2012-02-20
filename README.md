@@ -52,4 +52,6 @@ There is possibility to configure rcqrs-rails. Right now there is just 2 options
     setting.default_database_file_path = "config/database_event_store.yml" 
   end 
 
+  If You will use dm-rails You need to put all config to config/database.yml to make sure that all rake will be work for You.
+
 You can put it for example in config/initializer/rcqrs.rb
