@@ -1,7 +1,6 @@
 module Rcqrs
   class Gateway
     include Singleton
-    include Eventful
 
     def self.publish(command)
       instance.dispatch(command)
@@ -24,9 +23,9 @@ module Rcqrs
       wire_events
     end
 
-    # Dispatch raised domain events
+    # publish raised domain events
     def wire_events
-      @repository.on(:domain_event) {|source, event| @event_bus.dispatch(event) }
+      @repository.on(:domain_event) {|source, event| @event_bus.publish(event) }
     end
     
     def create_repository
@@ -44,7 +43,8 @@ module Rcqrs
     def create_event_storage
       case Setting.default_orm 
         when :data_mapper
-          raise NotImplementedError, "Not implemented yet, needed adapter for data mapper"
+          config = YAML.load_file(File.join(Rails.root, 'config/event_storage.yml'))[Rails.env]
+          EventStore::Adapters::DataMapperAdapter.new(config)
         when :active_record
           config = YAML.load_file(File.join(Rails.root, 'config/event_storage.yml'))[Rails.env]
           EventStore::Adapters::ActiveRecordAdapter.new(config)
