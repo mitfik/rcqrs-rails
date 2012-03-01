@@ -29,7 +29,7 @@ module Rcqrs
     end
     
     def create_repository
-      EventStore::DomainRepository.new(create_event_storage)
+      EventStore::DomainRepository.new(EventStore.create)
     end
     
     def create_command_bus
@@ -37,21 +37,8 @@ module Rcqrs
     end
 
     def create_event_bus
-      Bus::EventBus.new(Bus::EventRouter.new)
+      Bus::EventBus.new(Bus::EventRouter.new) 
     end
     
-    def create_event_storage
-      case Setting.default_orm 
-        when :data_mapper
-          EventStore::Adapters::DataMapperAdapter.new
-        when :active_record
-          config = YAML.load_file(File.join(Rails.root, Setting.default_database_file_path))[Rails.env]
-          EventStore::Adapters::ActiveRecordAdapter.new(config)
-        when :in_memory
-          EventStore::Adapters::InMemoryAdapter.new 
-        else
-          raise "This ORM is not supported yet: #{Setting.default_orm}, try use :data_mapper, :active_record or :in_memory"
-      end
-    end
   end
 end

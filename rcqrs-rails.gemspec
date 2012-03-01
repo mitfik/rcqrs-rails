@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rcqrs-rails"
-  s.version = "0.1.5"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben Smith"]
-  s.date = "2012-02-20"
+  s.date = "2012-03-01"
   s.email = "ben@slashdotdash.net"
   s.extra_rdoc_files = [
     "LICENSE",
