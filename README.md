@@ -9,17 +9,20 @@ Add the following dependencies to your Rails app's Gemfile and then `bundle inst
     gem "rcqrs"
     gem "rcqrs-rails"
 
-### Automatic
-Use rails g rcqrs:install 
-
-### Manual
-
 Add the following snippet inside `application_controller.rb` (ensuring it is `protected`) to allow each of your controllers to publish commands.
 
     protected:
       def publish(command)
         Rcqrs::Gateway.publish(command)
       end
+
+### Automatic
+ 
+ Use rails g rcqrs:configuration
+
+ Which will create proper directories for commands, domain, events and add initializer for our rcqrs.
+
+### Manual
 
 Create a yaml config file with your event storage configuration named `config/event_storage.yml` (or copy the example from `example/event_storage.yml`).
 
@@ -42,5 +45,5 @@ This plugin provides three generators to ease common tasks for generating comman
  * rcqrs:command          `rails g rcqrs:command <command name>`
  * rcqrs:event            `rails g rcqrs:event <event_name>`
  * rcqrs:domain           `rails g rcqrs:domain <domain name>`
- * rcqrs:install          `rails g rcqrs:install`
+ * rcqrs:configuration    `rails g rcqrs:configuration`
  

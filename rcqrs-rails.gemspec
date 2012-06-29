@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
     "lib/generators/rcqrs/event/event_generator.rb",
     "lib/generators/rcqrs/event/templates/event.rb",
     "lib/generators/rcqrs/event/templates/handler.rb",
-    "lib/generators/rcqrs/install/install_generator.rb",
+    "lib/generators/rcqrs/configuration/configuration_generator.rb",
     "lib/rcqrs-rails.rb",
     "lib/rcqrs/gateway.rb",
     "lib/rcqrs/setting.rb",
