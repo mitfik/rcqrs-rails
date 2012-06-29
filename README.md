@@ -16,10 +16,10 @@ Use rails g rcqrs:install
 
 Add the following snippet inside `application_controller.rb` (ensuring it is `protected`) to allow each of your controllers to publish commands.
 
-  protected:
-    def publish(command)
-      Rcqrs::Gateway.publish(command)
-    end
+    protected:
+      def publish(command)
+        Rcqrs::Gateway.publish(command)
+      end
 
 Create a yaml config file with your event storage configuration named `config/event_storage.yml` (or copy the example from `example/event_storage.yml`).
 
