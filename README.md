@@ -24,6 +24,7 @@ Add the following snippet inside `application_controller.rb` (ensuring it is `pr
 Create a yaml config file with your event storage configuration named `config/event_storage.yml` (or copy the example from `example/event_storage.yml`).
 
 Add the following paths to your `application.rb` file `autoload_paths` configuration
+
     config.autoload_paths += %W(
 								  #{config.root}/app/commands
 								  #{config.root}/app/commands/handlers
