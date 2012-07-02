@@ -11,7 +11,7 @@ Add the following dependencies to your Rails app's Gemfile and then `bundle inst
 
 Add the following snippet inside `application_controller.rb` (ensuring it is `protected`) to allow each of your controllers to publish commands.
 
-    protected:
+    protected
       def publish(command)
         Rcqrs::Gateway.publish(command)
       end
