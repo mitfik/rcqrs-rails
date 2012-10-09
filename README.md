@@ -17,7 +17,7 @@ Add the following snippet inside `application_controller.rb` (ensuring it is `pr
       end
 
 ### Automatic
- 
+
  Use rails g rcqrs:configuration
 
  Which will create proper directories for commands, domain, events and add initializer for our rcqrs.
@@ -40,10 +40,10 @@ Add the following paths to your `application.rb` file `autoload_paths` configura
 
 ##Generators
 
-This plugin provides three generators to ease common tasks for generating commands, events and controllers using the CQRS pattern.
+This plugin provides few generators which will help you to create new commands, events and controllers using the CQRS pattern.
 
  * rcqrs:command          `rails g rcqrs:command <command name>`
  * rcqrs:event            `rails g rcqrs:event <event_name>`
  * rcqrs:domain           `rails g rcqrs:domain <domain name>`
  * rcqrs:configuration    `rails g rcqrs:configuration`
- 
+
