@@ -2,11 +2,11 @@ module Rcqrs
   class Gateway
     include Singleton
 
-    def self.publish(command)
+    def self.apply(command)
       instance.dispatch(command)
     end
-    
-    # Dispatch commands to the bus within a transaction
+
+    # Dispatch command to the bus within a transaction
     def dispatch(command)
       @repository.transaction do
         @command_bus.dispatch(command)
@@ -14,12 +14,11 @@ module Rcqrs
     end
 
   private
-  
+
     def initialize
       @repository = create_repository
       @command_bus = create_command_bus
       @event_bus = create_event_bus
-      
       wire_events
     end
 
@@ -27,18 +26,18 @@ module Rcqrs
     def wire_events
       @repository.on(:domain_event) {|source, event| @event_bus.publish(event) }
     end
-    
+
     def create_repository
       EventStore::DomainRepository.new(EventStore.create)
     end
-    
+
     def create_command_bus
       Bus::CommandBus.new(Bus::CommandRouter.new, @repository)
     end
 
     def create_event_bus
-      Bus::EventBus.new(Bus::EventRouter.new) 
+      Bus::EventBus.new(Bus::EventRouter.new)
     end
-    
+
   end
 end

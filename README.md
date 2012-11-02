@@ -12,9 +12,23 @@ Add the following dependencies to your Rails app's Gemfile and then `bundle inst
 Add the following snippet inside `application_controller.rb` (ensuring it is `protected`) to allow each of your controllers to publish commands.
 
     protected
-      def publish(command)
-        Rcqrs::Gateway.publish(command)
+      def apply(command)
+        Rcqrs::Gateway.apply(command)
       end
+
+For development purpose you can add it like that:
+
+    protected
+      def apply(command)
+        begin
+          Rcqrs::Gateway.apply(command)
+        resque => e
+          puts e
+          puts e.backtrace
+        end
+      end
+
+This will allow you to see all backtrace from rcqrs in case if something will goes wrong.
 
 ### Automatic
 
