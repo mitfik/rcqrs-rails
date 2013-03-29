@@ -22,7 +22,7 @@ For development purpose you can add it like that:
       def apply(command)
         begin
           Rcqrs::Gateway.apply(command)
-        resque => e
+        rescue => e
           puts e
           puts e.backtrace
         end
